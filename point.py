@@ -13,16 +13,16 @@ class Point:
         """Função construtora de um ponto no cubo.
 
         Arguments:
-            x {[int]} -- [coordenada x do ponto]
-            z {[int]} -- [coordenada y do ponto]
-            y {[int]} -- [coordenada z do ponto]
+            x {int} -- coordenada x do ponto
+            z {int} -- coordenada y do ponto
+            y {int} -- coordenada z do ponto
 
         Keyword Arguments:
-            parent    {Point} -- [Guarda a posição do ponto pai]          (default: {None})
-            endPoint  {Point} -- [Guarda a posição do ponto final]        (default: {None})
-            isBlocked {bool}  -- [Verificar se ponto está bloqueado]      (default: {False})
-            isInit    {bool}  -- [Verificar se ponto é o ponto inicial]   (default: {False})
-            isEnd     {bool}  -- [Verificar se ponto é o ponto final]     (default: {False})
+            parent    {Point} -- Guarda a posição do ponto pai          (default: {None})
+            endPoint  {Point} -- Guarda a posição do ponto final        (default: {None})
+            isBlocked {bool}  -- Verificar se ponto está bloqueado      (default: {False})
+            isInit    {bool}  -- Verificar se ponto é o ponto inicial   (default: {False})
+            isEnd     {bool}  -- Verificar se ponto é o ponto final     (default: {False})
 
         """
         self.x = x
@@ -46,10 +46,10 @@ class Point:
         """Calcula a distância entre esse ponto e outro
 
         Arguments:
-            point {[Point]} -- [Outro ponto]
+            point {Point} -- Outro ponto
 
         Returns:
-            [float] -- [Distância calculada entre esse ponto e outro]
+            float -- Distância calculada entre esse ponto e outro
         """
         return math.sqrt(
             ((point.x - self.x) ** 2) +
@@ -78,10 +78,10 @@ class Point:
         """Calcula a distância heurística do ponto
         
         Arguments:
-            point {[Point]} -- [Ponto Final]
+            point {Point} -- Ponto Final
         
         Returns:
-            [float] -- [Distância entre dois pontos]
+            float -- Distância entre dois pontos
         """
         return distanceBetweenThisPointAndAnother(self, point)
 
@@ -89,10 +89,10 @@ class Point:
         """Calcula a distância do ponto até o ponto inicial
         
         Arguments:
-            point {[Point]} -- [Ponto inicial]
+            point {Point} -- Ponto inicial
         
         Returns:
-            [int] -- [Distância entre dois pontos]
+            int -- Distância entre dois pontos
         """
         return 1 + point.g
 

@@ -10,14 +10,14 @@ class Cube:
         """Cria um Cubo.
 
         Arguments:
-            cubeSize {[int]}    -- [Número de pontos em uma face.]
-            initPoint {[Point]} -- [Ponto de início.]
-            endPoint {[Point]}  -- [Ponto final.]
-            percentOfBlockedPoints {[Int]} -- [Porcentagem de pontos bloqueados.]
+            cubeSize {int}    -- Número de pontos em uma face.
+            initPoint {Point} -- Ponto de início.
+            endPoint {Point}  -- Ponto final.
+            percentOfBlockedPoints {Int} -- Porcentagem de pontos bloqueados.
 
         Keyword Arguments:
-            blockedValues {list} -- [Lista de elementos bloqueados. Se deixar em branco,
-                                                é gerado aleatoriamente.] (default: {[]})
+            blockedValues {list} -- Lista de elementos bloqueados. Se deixar em branco,
+                                                é gerado aleatoriamente. (default: {[]})
         """
 
         self.cubeSize = cubeSize
