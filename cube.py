@@ -7,17 +7,17 @@ from point import *
 
 class Cube:
     def __init__(self, cubeSize, initPoint, endPoint, percentOfBlockedPoints, blockedValues=[]):
-        """Cria um Cubo.
+        """ Função construtora de um Cubo.
 
         Arguments:
             cubeSize {int}    -- Número de pontos em uma face.
             initPoint {Point} -- Ponto de início.
             endPoint {Point}  -- Ponto final.
-            percentOfBlockedPoints {Int} -- Porcentagem de pontos bloqueados.
+            percentOfBlockedPoints {int} -- Porcentagem de pontos bloqueados.
 
         Keyword Arguments:
-            blockedValues {list} -- Lista de elementos bloqueados. Se deixar em branco,
-                                                é gerado aleatoriamente. (default: {[]})
+            blockedValues {list} -- Lista de elementos bloqueados. 
+            Se deixar em branco, é gerado aleatoriamente. (default: {[]})
         """
 
         self.cubeSize = cubeSize
@@ -34,7 +34,8 @@ class Cube:
         self.createObstacles()
 
     def createObstacles(self):
-        """ Método que cria obstáculos no cubo baseado em uma porcentagem fornecida na criação do cubo
+        """ Método que cria obstáculos no cubo baseado em uma porcentagem 
+        fornecida na criação do cubo
         """
         InitAndEnd = 2
         numOfBlockedPoints = ((((self.cubeSize**3) - InitAndEnd) *
@@ -62,9 +63,21 @@ class Cube:
         pprint.pprint(self.array)
 
     def getInformations(self):
+        """ Retorna as principais informações do cubo
+        
+        Returns:
+            [string] -- [String contendo tamanho, porcentagem,
+                        pts de inicio e fim]
+        """     
         return ("size: {}, blocked: {}%, init: {}, end: {}"
                 .format(self.cubeSize, self.percentOfBlockedPoints,
                         self.initPoint, self.endPoint))
 
     def getBlockedValues(self):
+        """ Retorna uma array com as coordenadas de valores bloqueados. 
+        Útil para realizar a mesma busca diversas vezes
+        
+        Returns:
+            [list] -- [Array com valores bloqueados]
+        """
         return self.blockedValues

@@ -21,10 +21,30 @@ from a_star import *
 
 
 def pointIsDefined(x, y, z):
+    """ Função que define se um ponto passado pela linha de comando
+    está definido ou não
+
+    Arguments:
+        x {[int]} -- [Coordenada x do Ponto]
+        y {[int]} -- [Coordenada y do Ponto]
+        z {[int]} -- [Coordenada z do Ponto]
+
+    Returns:
+        [bool] -- [Verdadeiro caso esteja definido]
+    """
     return x is not None and y is not None and z is not None
 
 
 def getSizeOfCube(numCube):
+    """ Função que define se o número do cubo passado pela linha de comando
+    está definido ou não
+    
+    Arguments:
+        numCube {[int]} -- [Número de pontos numa face]
+    
+    Returns:
+        [int] -- [Quantidade de pontos numa face]
+    """
     if numCube is not None:
         return int(numCube)
     else:
@@ -32,6 +52,15 @@ def getSizeOfCube(numCube):
 
 
 def getPercentOfBlockedPoints(pct):
+    """ Função que define se a porcentagem de pontos bloqueados 
+    passado pela linha de comando está definido ou não
+    
+    Arguments:
+        pct {[int]} -- [Porcentagem de pontos bloqueados]
+    
+    Returns:
+        [int] -- [Porcentagem de pontos bloqueados]
+    """
     if pct is not None:
         return int(pct)
     else:
@@ -39,6 +68,14 @@ def getPercentOfBlockedPoints(pct):
 
 
 def parseArgs(parser):
+    """ Essa função apenas faz o parse dos argumentos
+    
+    Arguments:
+        parser {[type]} -- [O parser.]
+    
+    Returns:
+        [args] -- [Argumentos parseados]
+    """
     parser.add_argument(
         '-x1', type=int, help="Point x of Init", required=False)
     parser.add_argument(
