@@ -58,11 +58,42 @@ class Point:
 
     def setBlocked(self):
         self.isBlocked = True
+    
+    def setInit(self):
+        self.isInit = True
+    
+    def setEnd(self):
+        self.isEnd = True
+
+    def isBlocked(self):
+        return self.IsBlocked
+    
+    def isInit(self):
+        return self.isInit
+    
+    def isEnd(self):
+        return self.isEnd
 
     def calcHeuristicDistanceFromEnd(self, point):
+        """Calcula a distância heurística do ponto
+        
+        Arguments:
+            point {[Point]} -- [Ponto Final]
+        
+        Returns:
+            [float] -- [Distância entre dois pontos]
+        """
         return distanceBetweenThisPointAndAnother(self, point)
 
     def calcDistanceBetweenInit(self, point):
+        """Calcula a distância do ponto até o ponto inicial
+        
+        Arguments:
+            point {[Point]} -- [Ponto inicial]
+        
+        Returns:
+            [int] -- [Distância entre dois pontos]
+        """
         return 1 + point.g
 
     def calculateF(self):
