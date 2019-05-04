@@ -6,6 +6,13 @@ from cube import Cube
 
 class AStar:
     def __init__(self, graph, initPoint, endPoint):
+        """ Construtor da função A*
+        
+        Arguments:
+            graph {[Cube]} -- [Um cubo]
+            initPoint {[Point]} -- [Ponto inicial]
+            endPoint {[Point]} -- [Ponto final]
+        """
         self.graph = graph
         self.initPoint = initPoint
         self.endPoint = endPoint
@@ -13,6 +20,14 @@ class AStar:
         self.closedPoints = []
 
     def search(self):
+        """ Aplica a busca do A*
+        
+        Raises:
+            ValueError: [Caso não tenha solução, causa uma exceção]
+        
+        Returns:
+            [array] -- [O caminho percorrido até chegar no ponto final]
+        """
         self.openedPoints.append(self.initPoint)
         while len(self.openedPoints) > 0:
             current = min(self.openedPoints, key=lambda o: o.g + o.h)

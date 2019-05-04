@@ -53,13 +53,9 @@ class Cube:
                 self.blockedValues.append((x, y, z))
                 self.array[x][y][z].isBlocked = True
 
-    def printCube(self):
-        for i in range(self.cubeSize):
-            for j in range(self.cubeSize):
-                for k in range(self.cubeSize):
-                    print(self.array[i][j][k])
-
     def pprintArray(self):
+        """ Printa a array de maneira bonita
+        """
         pprint.pprint(self.array)
 
     def getInformations(self):
@@ -83,6 +79,14 @@ class Cube:
         return self.blockedValues
 
     def getNeighbors(self, point):
+        """ Pega os vizinhos de cada ponto
+        
+        Arguments:
+            point {[Ponto]}
+        
+        Returns:
+            [Array[Point]] -- [Array com os vizinhos validos deste ponto]
+        """
         neighbors = []
         neighbors.append(Point(point.getX() + 1, point.getY(),
                                point.getZ(), parent=point, endPoint=self.endPoint))
@@ -100,6 +104,14 @@ class Cube:
         return list(filter(self.neighborIsValid, neighbors))
 
     def getLowestFValue(self, array):
+        """ Pegar o menor valor de F.
+        
+        Arguments:
+            array {[Ponto]} -- [array de pontos]
+        
+        Returns:
+            [Ponto] -- [Ponto com menor F]
+        """
         if len(array) > 0:
             lowest = array[0]
             for point in array:
