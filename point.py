@@ -33,9 +33,9 @@ class Point:
         self.isBlocked = isBlocked
         if (parent is not None):
             self.parent = parent
-            self.g = calcHeuristicDistanceFromEnd(endPoint)
-            self.h = calcDistanceBetweenInit(parent)
-            self.f = calculateF()
+            self.g = self.calcHeuristicDistanceFromEnd(endPoint)
+            self.h = self.calcDistanceBetweenInit(parent)
+            self.f = self.calculateF()
         else:
             self.parent = None
             self.g = 0
@@ -74,6 +74,15 @@ class Point:
     def isEnd(self):
         return self.isEnd
 
+    def getX(self):
+        return self.x
+
+    def getY(self):
+        return self.y
+
+    def getZ(self):
+        return self.z
+
     def calcHeuristicDistanceFromEnd(self, point):
         """Calcula a distância heurística do ponto
         
@@ -83,7 +92,7 @@ class Point:
         Returns:
             float -- Distância entre dois pontos
         """
-        return distanceBetweenThisPointAndAnother(self, point)
+        return self.distanceBetweenThisPointAndAnother(point)
 
     def calcDistanceBetweenInit(self, point):
         """Calcula a distância do ponto até o ponto inicial
@@ -107,7 +116,7 @@ class Point:
         if(self.isEnd):
             return "({0}, {1}, {2}, E)".format(self.x, self.y, self.z)
 
-        return "({0}, {1}, {2}, {3}, _)".format(self.x, self.y, self.z, self.isBlocked)
+        return "({0}, {1}, {2})".format(self.x, self.y, self.z)
 
     def __repr__(self):
         if(self.isBlocked):
@@ -117,7 +126,7 @@ class Point:
         if(self.isEnd):
             return "({0}, {1}, {2}, E)".format(self.x, self.y, self.z)
 
-        return "({0}, {1}, {2}, _)".format(self.x, self.y, self.z)
+        return "({0}, {1}, {2})".format(self.x, self.y, self.z)
 
     def __eq__(self, value):
         return (self.x == value.x and

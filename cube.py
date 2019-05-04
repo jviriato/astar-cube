@@ -64,11 +64,11 @@ class Cube:
 
     def getInformations(self):
         """ Retorna as principais informações do cubo
-        
+
         Returns:
             [string] -- [String contendo tamanho, porcentagem,
                         pts de inicio e fim]
-        """     
+        """
         return ("size: {}, blocked: {}%, init: {}, end: {}"
                 .format(self.cubeSize, self.percentOfBlockedPoints,
                         self.initPoint, self.endPoint))
@@ -76,8 +76,46 @@ class Cube:
     def getBlockedValues(self):
         """ Retorna uma array com as coordenadas de valores bloqueados. 
         Útil para realizar a mesma busca diversas vezes
-        
+
         Returns:
             [list] -- [Array com valores bloqueados]
         """
         return self.blockedValues
+
+    def getNeighbors(self, point):
+        neighbors = []
+        neighbors.append(Point(point.getX() + 1, point.getY(),
+                               point.getZ(), parent=point, endPoint=self.endPoint))
+        neighbors.append(Point(point.getX(), point.getY() + 1,
+                               point.getZ(), parent=point, endPoint=self.endPoint))
+        neighbors.append(Point(point.getX(), point.getY(
+        ), point.getZ() + 1, parent=point, endPoint=self.endPoint))
+        neighbors.append(Point(point.getX() - 1, point.getY(),
+                               point.getZ(), parent=point, endPoint=self.endPoint))
+        neighbors.append(Point(point.getX(), point.getY() - 1,
+                               point.getZ(), parent=point, endPoint=self.endPoint))
+        neighbors.append(Point(point.getX(), point.getY(
+        ), point.getZ() - 1, parent=point, endPoint=self.endPoint))
+
+        return list(filter(self.neighborIsValid, neighbors))
+
+    def getLowestFValue(self, array):
+        if len(array) > 0:
+            lowest = array[0]
+            for point in array:
+                if point.calculateF() < lowest.calculateF():
+                    lowest = point
+            return lowest
+
+    def neighborIsValid(self, point):
+        """ Determina se os vizinhos do Ponto são válidos
+        
+        Arguments:
+            point {[Point]} -- [Ponto]
+        
+        Returns:
+            [bool] -- [Se é valido]
+        """
+        return ((point.getX() < self.cubeSize and point.getY() < self.cubeSize and
+                 point.getZ() < self.cubeSize and point.getX() >= 0 and
+                 point.getY() >= 0 and point.getZ() >= 0) and self.array[point.getX()][point.getY()][point.getZ()].isBlocked == False)

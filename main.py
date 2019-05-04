@@ -112,9 +112,13 @@ def main():
             0, sizeOfCube - 1), random.randint(0, sizeOfCube - 1))
 
     cube = Cube(sizeOfCube, p1, p2, percentOfBlockedPoints)
+
+    print(cube.getInformations())
     cube.pprintArray()
     astar = AStar(cube, cube.initPoint, cube.endPoint)
-
+    path = astar.search()
+    if path is not None: 
+        print(path)
 
 if __name__ == "__main__":
     main()
