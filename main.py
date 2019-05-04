@@ -18,7 +18,7 @@ import argparse
 from cube import *
 from point import *
 from a_star import *
-
+from timeit import default_timer as timer
 
 def pointIsDefined(x, y, z):
     """ Função que define se um ponto passado pela linha de comando
@@ -91,7 +91,6 @@ def parseArgs(parser):
         '-p', type=int, help="Percentage of Blocked Points", required=False)
     return parser.parse_args()
 
-
 def main():
     parser = argparse.ArgumentParser(
         description='Take two points in a Cube and find the path using A*.')
@@ -112,11 +111,13 @@ def main():
             0, sizeOfCube - 1), random.randint(0, sizeOfCube - 1))
 
     cube = Cube(sizeOfCube, p1, p2, percentOfBlockedPoints)
-
     print(cube.getInformations())
     cube.pprintArray()
     astar = AStar(cube, cube.initPoint, cube.endPoint)
+    start = timer()
     path = astar.search()
+    end = timer()
+    elapsedTime = (end - start)
     if path is not None: 
         print(path)
 
