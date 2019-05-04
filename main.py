@@ -91,6 +91,10 @@ def parseArgs(parser):
         '-p', type=int, help="Percentage of Blocked Points", required=False)
     return parser.parse_args()
 
+def randPoint(sizeOfCube):
+    return Point(random.randint(0, sizeOfCube - 1), random.randint(
+            0, sizeOfCube - 1), random.randint(0, sizeOfCube - 1))
+
 def main():
     parser = argparse.ArgumentParser(
         description='Take two points in a Cube and find the path using A*.')
@@ -101,14 +105,12 @@ def main():
     if pointIsDefined(args.x1, args.y1, args.z1):
         p1 = Point(args.x1, args.y1, args.z1)
     else:
-        p1 = Point(random.randint(0, sizeOfCube - 1), random.randint(
-            0, sizeOfCube - 1), random.randint(0, sizeOfCube - 1))
+        p1 = randPoint(sizeOfCube)
 
     if pointIsDefined(args.x2, args.y2, args.z2):
         p2 = Point(args.x2, args.y2, args.z2)
     else:
-        p2 = Point(random.randint(0, sizeOfCube - 1), random.randint(
-            0, sizeOfCube - 1), random.randint(0, sizeOfCube - 1))
+        p2 = randPoint(sizeOfCube)
 
     cube = Cube(sizeOfCube, p1, p2, percentOfBlockedPoints)
     print(cube.getInformations())
